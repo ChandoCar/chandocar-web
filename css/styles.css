@@ -1,0 +1,49 @@
+/* RESET BÁSICO */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+nav {
+    background-color: #333;
+    padding: 10px;
+}
+
+/* MENÚ ESTILO GENERAL */
+.menu {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex; /* Por defecto será horizontal */
+    flex-wrap: wrap; /* Para que las opciones se ajusten si falta espacio */
+}
+
+.menu li {
+    margin: 0;
+}
+
+.menu a {
+    text-decoration: none;
+    color: white;
+    padding: 10px 20px;
+    display: block;
+}
+
+/* Efecto hover */
+.menu a:hover {
+    background-color: #555;
+}
+
+/* MENÚ VERTICAL EN MÓVILES */
+@media (max-width: 768px) {
+    .menu {
+        flex-direction: column; /* Cambia a dirección vertical */
+        align-items: center;
+    }
+
+    .menu a {
+        text-align: center; /* Opcional para centrar texto */
+        padding: 15px 0; /* Más espaciado entre opciones */
+        width: 100%; /* Ocupa todo el ancho */
+    }
+}
