@@ -1,49 +1,164 @@
-/* RESET BÁSICO */
-body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-}
-
-nav {
-    background-color: #333;
-    padding: 10px;
-}
-
-/* MENÚ ESTILO GENERAL */
-.menu {
-    list-style: none;
+/* Reset y Base */
+* {
     margin: 0;
     padding: 0;
-    display: flex; /* Por defecto será horizontal */
-    flex-wrap: wrap; /* Para que las opciones se ajusten si falta espacio */
+    box-sizing: border-box;
 }
 
-.menu li {
-    margin: 0;
+:root {
+    /* Colores para modo claro/oscuro */
+    --bg-primary: #f4f4f4;
+    --text-primary: #333;
+    --bg-secondary: #ffffff;
+    --text-secondary: #000;
+    --accent-color: #667eea;
+    --accent-color-hover: #764ba2;
 }
 
-.menu a {
+.dark-mode {
+    --bg-primary: #1a1a2e;
+    --text-primary: #e0e0e0;
+    --bg-secondary: #16213e;
+    --text-secondary: #f1f1f1;
+    --accent-color: #0f3460;
+    --accent-color-hover: #535c91;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    transition: background-color 0.3s, color 0.3s;
+}
+
+/* Navbar Styles */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    background: linear-gradient(135deg, var(--accent-color) 0%, var(--accent-color-hover) 100%);
+    color: white;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.navbar .logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.navbar .menu {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 0.5rem;
+    max-width: 80%;
+}
+
+.navbar .menu li {
+    margin: 0 5px;
+}
+
+.navbar .menu li:nth-child(n+6) {
+    font-size: 0.9rem;
+    color: #ccc;
+}
+
+.navbar .menu li a {
     text-decoration: none;
     color: white;
-    padding: 10px 20px;
+    padding: 10px;
     display: block;
+    transition: all 0.3s ease;
+    border-radius: 4px;
 }
 
-/* Efecto hover */
-.menu a:hover {
-    background-color: #555;
+.navbar .menu li a:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+    transform: scale(1.05);
 }
 
-/* MENÚ VERTICAL EN MÓVILES */
-@media (max-width: 768px) {
-    .menu {
-        flex-direction: column; /* Cambia a dirección vertical */
-        align-items: center;
+.navbar .menu-toggle {
+    display: none;
+    font-size: 1.5rem;
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+}
+
+/* Form Styles */
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    max-width: 600px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background: var(--bg-secondary);
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+form label {
+    font-weight: bold;
+    color: var(--text-primary);
+}
+
+form input, form textarea {
+    padding: 0.75rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    background-color: var(--bg-secondary);
+    color: var(--text-primary);
+}
+
+form button {
+    padding: 0.7rem;
+    border: none;
+    background: linear-gradient(135deg, var(--accent-color) 0%, var(--accent-color-hover) 100%);
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: transform 0.3s ease;
+}
+
+form button:hover {
+    transform: scale(1.05);
+    opacity: 0.9;
+}
+
+/* Responsive Styles */
+@media (max-width: 1024px) {
+    .navbar .menu {
+        flex-direction: column;
+        display: none;
+        background-color: var(--bg-secondary);
+        width: 100%;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        padding: 1rem;
+        z-index: 1000;
     }
 
-    .menu a {
-        text-align: center; /* Opcional para centrar texto */
-        padding: 15px 0; /* Más espaciado entre opciones */
-        width: 100%; /* Ocupa todo el ancho */
+    .navbar .menu-toggle {
+        display: block;
     }
+}
+
+/* Dark Mode Toggle */
+.dark-mode-toggle {
+    position: fixed;
+    top: 80px; /* Más abajo */
+    right: 20px;
+    background: rgba(0, 0, 0, 0.5); /* Semi-transparente */
+    padding: 10px;
+    border-radius: 50%;
+    z-index: 1000;
 }

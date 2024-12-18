@@ -1,83 +1,90 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="../css/styles.css">
-    <title>Contacta con ChandoCar</title>
+    <title>ChandoCar - Contacto</title>
 </head>
 <body>
-<h1>ChandoCar</h1>
-<h2>Contacto</h2>
-<nav>
-    <ul>
+<nav class="navbar">
+    <div class="logo">ChandoCar</div>
+    <button class="menu-toggle" aria-label="Abrir menú">
+        ☰
+    </button>
+    <ul class="menu">
+        <li><a href="../index.html">Inicio</a></li>
+        <li><a href="queSomos.html">Quenes somos</a></li>
+        <li><a href="queQueremos.html">Qué queremos</a></li>
+        <li><a href="datos.html">Datos</a></li>
+        <li><a href="https://forms.gle/7MuBGsiA2itxpgKFA" target="_blank">Enquisa de uso, ChandoCar</a></li>
+        <li><a href="FAQ.html">FAQ</a></li>
         <li>
-            Inicio
-            <a href="../index.html"></a>
-        </li>
-        <li>
-            Quenes somos?
-            <a href="queSomos.html"></a>
-        </li>
-        <li>
-            Que queremos?
-            <a href="queQueremos.html"></a>
-        </li>
-        <li>
-            Datos
-            <a href="datos.html"></a>
-        </li>
-        <li>
-            Enquisa de uso, ChandoCar
-            <a href="https://forms.gle/7MuBGsiA2itxpgKFA"></a>
-        </li>
-        <li>
-            Contacto
-            <a href="contacto.html"></a>
-        </li>
-        <li>
-            Descarga xá a aplicacion de ChandoCar para dispositivos android
-            <a href="https://play.google.com/store/apps/details?id=your.app.id" target="_blank">
-                <img src="../resources/googlePlayLogoDownloadNow.png" alt="Descarga na google play store"
-                     style="height: 40px;">
-            </a>
-        </li>
-        <li>
-            ChandoCar é de código aberto, checa aqui os repositorios de github
             <a href="https://github.com/ChandoCar" target="_blank">
-                <img src="../resources/githubIcon1.png"
-                     alt="View on GitHub" style="height: 20px; vertical-align: middle;">
+                ChandoCar é de código aberto, checa aqui os repositorios de github
+                <img src="../resources/githubIcon1.png" alt="View on GitHub" style="height: 20px; vertical-align: middle;">
             </a>
         </li>
+        <li><a href="https://www.ieschandomonte.edu.es/" target="_blank">Web do centro</a></li>
+        <li><a href="contacto.html">Contacto</a></li>
         <li>
-            Preguntas fecuentes
-            <a href="../html/FAQ.html"></a>
-        </li>
-        <li>
-            Web do centro
-            <a href="https://www.ieschandomonte.edu.es/" target="_blank"></a>
+            <a href="https://play.google.com/store/apps/details?id=your.app.id" target="_blank" style="display: flex; align-items: center;">
+                Descarga xa a aplicación de ChandoCar para dispositivos Android
+                <img src="../resources/googlePlayLogoDownloadNow.png" alt="Download on Google Play" style="height: 20px; margin-left: 8px;">
+            </a>
         </li>
     </ul>
 </nav>
 
-<h3>Contacta con ChandoCar</h3>
-<p>Se tes dubidas, consellos, suxerencias, ou problemas de acceso a app, estaremos encantados de que te poñas en
-    contacto con nosco a traves das seguintes vías</p>
-<br>
-<p>
-    Mail:
-    <a href="mailto:chandocar@ieschandomonte.edu.es">
-        <img src="../resources/email.png" alt="Email" style="height: 20px; vertical-align: middle;">
-        chandocar@ieschandomonte.edu.es
-    </a>
-</p>
-<br>
-<p>
-    Direccion:
-    <a href="https://www.google.com/maps?q=Chan+do+Monte,+23,+36911+Marín,+Pontevedra" target="_blank">
-        <img src="../resources/google-maps.png" alt="Google Maps" style="height: 20px; vertical-align: middle;">
-        Chan do Monte, 23, 36911 Marín, Pontevedra
-    </a>
-</p>
+<div class="form-container">
+    <form action="../processForm.php" method="post" id="contactForm">
+        <label for="name">Nombre:</label>
+        <input type="text" id="name" name="name" required>
 
+        <label for="email">Correo Electrónico:</label>
+        <input type="email" id="email" name="email" required>
+
+        <label for="message">Mensaje:</label>
+        <textarea id="message" name="message" rows="4" required></textarea>
+
+        <button type="submit">Enviar</button>
+    </form>
+</div>
+
+<button class="dark-mode-toggle" aria-label="Toggle Dark Mode">🌓</button>
+
+<script>
+    const toggleButton = document.querySelector('.menu-toggle');
+    const menu = document.querySelector('.menu');
+    const darkModeToggle = document.querySelector('.dark-mode-toggle');
+    const contactForm = document.getElementById('contactForm');
+
+    toggleButton.addEventListener('click', () => {
+        menu.classList.toggle('active');
+    });
+
+    darkModeToggle.addEventListener('click', () => {
+        document.body.classList.toggle('dark-mode');
+        localStorage.setItem('dark-mode',
+            document.body.classList.contains('dark-mode')
+        );
+    });
+
+    // Inicializar modo oscuro desde localStorage
+    if (localStorage.getItem('dark-mode') === 'true') {
+        document.body.classList.add('dark-mode');
+    }
+
+    // Validación de formulario
+    contactForm.addEventListener('submit', (e) => {
+        const email = document.getElementById('email');
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+        if (!emailRegex.test(email.value)) {
+            e.preventDefault();
+            alert('Por favor, introduce un email válido');
+        }
+    });
+</script>
 </body>
-</html>
+</html>>
