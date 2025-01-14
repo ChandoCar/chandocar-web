@@ -8,7 +8,12 @@
 </head>
 <body>
 <nav class="navbar">
-    <div class="logo"><a href="index.html">ChandoCar</a></div>
+    <div class="logo">
+        <a href="index.html">
+            <img src="resources/chandocar.svg" alt="ChandoCar Logo" style="height: 30px; vertical-align: middle;">
+            ChandoCar
+        </a>
+    </div>
     <button class="menu-toggle" aria-label="Abrir menú">
         ☰
     </button>
@@ -32,18 +37,44 @@
         <li>
             <button class="dark-mode-toggle" aria-label="Toggle Dark Mode">🌓</button>
         </li>
-
     </ul>
 </nav>
 
-<video src="resources/ChandoCarVideoFinal.mp4"></video>
-
+<div class="video-container">
+<video src="resources/ChandoCarVideoFinal.mp4" controls="controls" autoplay="autoplay" preload="auto" loop="loop"></video>
+</div>
 
 <footer>
     <p><a href="https://www.ieschandomonte.edu.es/" target="_blank">Web do centro</a></p>
     <p><a href="html/contacto.html">Contacto</a></p>
     <p>&copy; 2025, Copyright ChandoCar. Todolos dereitos reservados</p>
 </footer>
+
+<button class="back-to-top" aria-label="Volver arriba">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M12 19V5M5 12l7-7 7 7"/>
+    </svg>
+</button>
+
+<script>
+    // Script para el botón volver arriba
+    const backToTop = document.querySelector('.back-to-top');
+
+    window.addEventListener('scroll', () => {
+        if (window.pageYOffset > 300) {
+            backToTop.classList.add('visible');
+        } else {
+            backToTop.classList.remove('visible');
+        }
+    });
+
+    backToTop.addEventListener('click', () => {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    });
+</script>
 
 
 <script>

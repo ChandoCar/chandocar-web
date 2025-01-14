@@ -8,35 +8,71 @@
 </head>
 <body>
 <nav class="navbar">
-    <div class="logo">ChandoCar</div>
+    <div class="logo">
+        <a href="../index.html">
+            <img src="../resources/chandocar.svg" alt="ChandoCar Logo" style="height: 30px; vertical-align: middle;">
+            ChandoCar
+        </a>
+    </div>
     <button class="menu-toggle" aria-label="Abrir menú">
         ☰
     </button>
     <ul class="menu">
-        <li><a href="../index.html">Inicio</a></li>
         <li><a href="queSomos.html">Quenes somos</a></li>
-        <li><a href="queQueremos.html">Qué queremos</a></li>
         <li><a href="datos.html">Datos</a></li>
-        <li><a href="https://forms.gle/7MuBGsiA2itxpgKFA" target="_blank">Enquisa de uso, ChandoCar</a></li>
+        <li><a href="https://forms.gle/7MuBGsiA2itxpgKFA" target="_blank">Enquisa de uso</a></li>
         <li><a href="FAQ.html">FAQ</a></li>
         <li>
             <a href="https://github.com/ChandoCar" target="_blank">
-                ChandoCar é de código aberto, checa aqui os repositorios de github
-                <img src="../resources/githubIcon1.png" alt="View on GitHub" style="height: 20px; vertical-align: middle;">
+                <img src="../resources/github-mark.svg" alt="View on GitHub"
+                     style="height: 30px; vertical-align: middle;">
             </a>
         </li>
-        <li><a href="https://www.ieschandomonte.edu.es/" target="_blank">Web do centro</a></li>
-        <li><a href="contacto.html">Contacto</a></li>
         <li>
-            <a href="https://play.google.com/store/apps/details?id=your.app.id" target="_blank" style="display: flex; align-items: center;">
-                Descarga xa a aplicación de ChandoCar para dispositivos Android
-                <img src="../resources/googlePlayLogoDownloadNow.png" alt="Download on Google Play" style="height: 20px; margin-left: 8px;">
+            <a href="https://play.google.com/store/apps/details?id=your.app.id" target="_blank"
+               style="display: flex; align-items: center;">
+                <img src="../resources/googlePlayLogoDownloadNow.png" alt="Download on Google Play"
+                     style="height: 30px; margin-left: 8px;">
             </a>
         </li>
+        <li>
+            <button class="dark-mode-toggle" aria-label="Toggle Dark Mode">🌓</button>
+        </li>
+
     </ul>
 </nav>
 
-<button class="dark-mode-toggle" aria-label="Toggle Dark Mode">🌓</button>
+<footer>
+    <p><a href="https://www.ieschandomonte.edu.es/" target="_blank">Web do centro</a></p>
+    <p><a href="contacto.html">Contacto</a></p>
+    <p>&copy; 2025, Copyright ChandoCar. Todolos dereitos reservados</p>
+</footer>
+
+<button class="back-to-top" aria-label="Volver arriba">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M12 19V5M5 12l7-7 7 7"/>
+    </svg>
+</button>
+
+<script>
+    // Script para el botón volver arriba
+    const backToTop = document.querySelector('.back-to-top');
+
+    window.addEventListener('scroll', () => {
+        if (window.pageYOffset > 300) {
+            backToTop.classList.add('visible');
+        } else {
+            backToTop.classList.remove('visible');
+        }
+    });
+
+    backToTop.addEventListener('click', () => {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    });
+</script>
 
 <script>
     const toggleButton = document.querySelector('.menu-toggle');
