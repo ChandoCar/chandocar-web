@@ -1,56 +1,49 @@
 name: Deploy to Dinahosting
 
-# Controla cuándo se ejecutará el workflow
 on:
   push:
     branches:
-      - master  # Cambiar a 'main' si esa es tu rama principal
-  workflow_dispatch: # Permite ejecutar el workflow manualmente desde la interfaz de GitHub
+      - master
+  workflow_dispatch:
 
-# Trabajos que se ejecutarán
 jobs:
   deploy:
     name: Deploy to Production
     runs-on: ubuntu-latest
 
     steps:
-      # Paso 1: Obtener el código del repositorio
       - name: Checkout repository
         uses: actions/checkout@v3
         with:
-          fetch-depth: 0 # Obtiene todo el historial para archivos modificados
+          fetch-depth: 0
 
-      # Paso 2: Configurar PHP (necesario si tu aplicación usa PHP)
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
         with:
-          php-version: '8.1' # Ajusta según tu versión de PHP
+          php-version: '8.1'
           extensions: mbstring, xml, ctype, iconv, intl, pdo_mysql, dom, filter, gd, iconv, json, mysqli
           coverage: none
 
-      # Paso 3: Instalar dependencias si usas Composer
-      - name: Install dependencies
-        run: |
-          if [ -f "composer.json" ]; then
-            composer install --no-dev --optimize-autoloader
-          fi
+      #- name: Install dependencies
+       # run: |
+        #  if [ -f "composer.json" ]; then
+         #   composer install --no-dev --optimize-autoloader
+          # fi
 
-      # Paso 4: Construir assets si usas npm/yarn
       #- name: Build assets
        # run: |
         #  if [ -f "package.json" ]; then
          #   npm install
           #  npm run build
-          #fi
+          # fi
 
-      # Paso 5: Desplegar vía FTP
       - name: Deploy to Dinahosting
-        uses: SamKirkland/FTP-Deploy-Action@v4.3.4
+        uses: SamKirkland/FTP-Deploy-Action@4.1.0
         with:
           server: ${{ secrets.FTP_SERVER }}
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
-          server-dir: /public_html/ # Ajusta según tu configuración
+          server-dir: /public_html/
           exclude: |
             **/.git*
             **/.git*/**
