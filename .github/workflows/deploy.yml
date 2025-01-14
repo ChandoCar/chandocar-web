@@ -36,12 +36,12 @@ jobs:
           fi
 
       # Paso 4: Construir assets si usas npm/yarn
-      - name: Build assets
-        run: |
-          if [ -f "package.json" ]; then
-            npm install
-            npm run build
-          fi
+      #- name: Build assets
+       # run: |
+        #  if [ -f "package.json" ]; then
+         #   npm install
+          #  npm run build
+          #fi
 
       # Paso 5: Desplegar vía FTP
       - name: Deploy to Dinahosting
