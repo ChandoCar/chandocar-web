@@ -32,7 +32,7 @@ jobs:
 
       #- name: Build assets
        # run: |
-        #  if [ -f "package.json" ]; then
+        #  if [ -f "package.json" ];  then
          #   npm install
           #  npm run build
           # fi
